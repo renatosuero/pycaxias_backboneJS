@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PyCaxias 2015 - Aplicações Dinâmicas com BackboneJS</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="todo.css"/>
+</head>
+  </head>
+
+  <body>
+
+    <div id="todoapp">
+
+      <header>
+        <h1>Todos</h1>
+        <input id="new-todo" type="text" placeholder="O que precisa ser feito?">
+      </header>
+
+      <section id="main">
+        <input id="toggle-all" type="checkbox">
+        <label for="toggle-all">Marcar todas como completa</label>
+        <ul id="todo-list"></ul>
+      </section>
+
+      <footer>
+        <a id="clear-completed">Limpar Completas</a>
+        <div id="todo-count"></div>
+      </footer>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/backbone-min.js"></script>
+    <script src="js/todos.js"></script>
+
+    <!-- Templates -->
+    <script type="text/template" id="item-template">
+      <div class="view">
+        <input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
+        <label><%- title %></label>
+        <a class="destroy"></a>
+      </div>
+      <input class="edit" type="text" value="<%- title %>" />
+    </script>
+
+    <script type="text/template" id="stats-template">
+      <% if (done) { %>
+        <a id="clear-completed">Limpar <%= done %> <%= done == 1 ? 'item completo' : 'items completos' %></a>
+      <% } %>
+      <div class="todo-count"><b><%= remaining %></b> <%= remaining == 1 ? 'item restante' : 'items restantes' %> </div>
+    </script>
+
+  </body>
+</html>
+
